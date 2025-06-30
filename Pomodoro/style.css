@@ -1,0 +1,387 @@
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.5;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #eee;
+}
+
+header,
+footer {
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+body.dark header,
+body.dark footer {
+  background-color: #222;
+  color: #eee;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.timer-button {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+  user-select: none;
+}
+
+.timer-button:hover,
+.timer-button:focus {
+  background-color: #fff;
+  color: #2c3e50;
+  outline: none;
+}
+
+.timer-selected {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  color: #fff;
+  cursor: default;
+}
+
+main {
+  flex: 1;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.timer-container {
+  background: #fff;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgb(0 0 0 / 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark .timer-container {
+  background: #1e1e1e;
+  color: #eee;
+  box-shadow: 0 8px 20px rgb(255 255 255 / 0.15);
+}
+
+.time-display {
+  font-size: 5rem;
+  font-weight: 700;
+  font-family: 'Courier New', Courier, monospace;
+  margin-bottom: 1.5rem;
+  user-select: none;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.control-button {
+  background-color: #3498db;
+  border: none;
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  user-select: none;
+}
+
+.control-button:hover,
+.control-button:focus {
+  background-color: #2980b9;
+  outline: none;
+}
+
+.control-button.visible {
+  display: inline-block;
+}
+
+.control-button:not(.visible) {
+  display: none;
+}
+
+.progress-bar-container {
+  background: #e0e0e0;
+  border-radius: 10px;
+  height: 18px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+body.dark .progress-bar-container {
+  background: #333;
+}
+
+.progress-indicator {
+  background-color: #e74c3c;
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+#progress-percentage {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 600;
+  user-select: none;
+}
+
+body.dark #progress-percentage {
+  color: #ccc;
+}
+
+.quote-section {
+  max-width: 480px;
+  font-style: italic;
+  color: #555;
+  text-align: center;
+  user-select: none;
+}
+
+body.dark .quote-section {
+  color: #bbb;
+}
+
+.quote-text {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.quote-author {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #888;
+}
+
+body.dark .quote-author {
+  color: #999;
+}
+
+.settings {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90vw;
+  max-width: 400px;
+  background: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgb(0 0 0 / 0.25);
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 100;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark .settings {
+  background: #222;
+  color: #eee;
+  box-shadow: 0 0 25px rgb(255 255 255 / 0.15);
+}
+
+.settings[aria-hidden="false"] {
+  display: block;
+}
+
+.settings h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+body.dark .settings h2 {
+  color: #eee;
+}
+
+.settings form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.settings label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #2c3e50;
+}
+
+body.dark .settings label {
+  color: #eee;
+}
+
+.settings input[type="text"],
+.settings input[type="number"] {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1.5px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+  background: #fff;
+  color: #333;
+}
+
+body.dark .settings input[type="text"],
+body.dark .settings input[type="number"] {
+  background: #333;
+  color: #eee;
+  border-color: #555;
+}
+
+.settings input[type="text"]:focus,
+.settings input[type="number"]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.theme-selection {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.theme-selection button {
+  flex: 1;
+  padding: 0.5rem 0;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  background-color: #ddd;
+  color: #333;
+  user-select: none;
+}
+
+.theme-selection button:hover,
+.theme-selection button:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.theme-selection button.selected {
+  border-color: #e74c3c;
+  background-color: #fddede;
+  color: #b22222;
+  font-weight: 700;
+}
+
+.settings-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.settings-actions button {
+  flex: 1;
+  padding: 0.75rem 0;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  user-select: none;
+}
+
+#save-button {
+  background-color: #27ae60;
+  color: #fff;
+}
+
+#save-button:hover,
+#save-button:focus {
+  background-color: #219150;
+  outline: none;
+}
+
+#close-button {
+  background-color: #c0392b;
+  color: #fff;
+}
+
+#close-button:hover,
+#close-button:focus {
+  background-color: #992d22;
+  outline: none;
+}
+
+footer a#settings {
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+  user-select: none;
+}
+
+footer a#settings:hover,
+footer a#settings:focus {
+  color: #e74c3c;
+  outline: none;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .timer-container {
+    padding: 1.5rem 2rem;
+  }
+
+  .time-display {
+    font-size: 3.5rem;
+  }
+
+  .control-button {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+  }
+}

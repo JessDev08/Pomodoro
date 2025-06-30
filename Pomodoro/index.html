@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Timer Pomodoro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Timer Pomodoro</h1>
+    <nav>
+      <button class="timer-button timer-selected" data-mode="pomodoro" aria-pressed="true">Pomodoro</button>
+      <button class="timer-button" data-mode="shortBreak" aria-pressed="false">Pausa Curta</button>
+      <button class="timer-button" data-mode="longBreak" aria-pressed="false">Pausa Longa</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="timer-container" role="timer" aria-live="polite" aria-atomic="true" aria-label="Contador Pomodoro">
+      <div class="time-display" id="time">25:00</div>
+      <div class="controls">
+        <button class="control-button visible" id="start">Iniciar</button>
+        <button class="control-button" id="pause">Pausar</button>
+        <button class="control-button" id="reset">Resetar</button>
+      </div>
+      <div class="progress-bar-container" aria-label="Barra de progresso do tempo">
+        <div class="progress-indicator" id="progress"></div>
+        <span id="progress-percentage">0%</span>
+      </div>
+    </section>
+
+    <section class="quote-section" aria-live="polite" aria-atomic="true" aria-label="Mensagem motivacional">
+      <p class="quote-text" id="quote">"Comece onde você está. Use o que você tem. Faça o que puder." </p>
+      <p class="quote-author" id="author">– Arthur Ashe</p>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" id="settings">Configurações</a>
+  </footer>
+
+  <section class="settings" aria-hidden="true" aria-label="Configurações do Timer" role="dialog">
+    <h2>Configurações</h2>
+    <form id="settings-form">
+      <label for="pomodoro-time">Tempo Pomodoro (minutos):</label>
+      <input type="number" id="pomodoro-time" name="pomodoro-time" min="1" max="60" value="25" required />
+
+      <label for="short-break-time">Tempo Pausa Curta (minutos):</label>
+      <input type="number" id="short-break-time" name="short-break-time" min="1" max="30" value="5" required />
+
+      <label for="long-break-time">Tempo Pausa Longa (minutos):</label>
+      <input type="number" id="long-break-time" name="long-break-time" min="1" max="60" value="15" required />
+
+      <div class="theme-selection" role="radiogroup" aria-label="Seleção de tema">
+        <button type="button" data-theme="light" class="selected" aria-checked="true" role="radio">Claro</button>
+        <button type="button" data-theme="dark" aria-checked="false" role="radio">Escuro</button>
+      </div>
+
+      <div class="settings-actions">
+        <button type="submit" id="save-button">Salvar</button>
+        <button type="button" id="close-button">Fechar</button>
+      </div>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
